@@ -1,0 +1,22 @@
+autoPackets 0.20 2. 10000000
+TStellar 150000.
+output 
+symmetricXYZ
+densityFile 'input/shapeSuWt2.dat'
+nebComposition "input/abunSuWt2.in"
+TeStart 7000.
+maxIterateMC  20 90.
+nPhotons 1000000
+nx 22
+ny 22
+nz 3
+nbins 600
+nuMax 15.
+nuMin 1.001e-5
+Rin 1.0e+15
+Rout 1.49e+18
+edges 1.49e+18 1.49e+18 1.42e+17
+convLimit 0.05
+multiPhotoSources 'input/suwt2_stars.in'
+getEquivalentTau
+recombinationLines

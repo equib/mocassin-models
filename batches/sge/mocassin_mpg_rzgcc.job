@@ -1,0 +1,26 @@
+#!/bin/csh
+#$ -l h_vmem=4G
+#$ -N mocassin
+#$ -o mocassin.log
+#$ -e mocassin.err
+#$ -pe mpi 8
+#$ -m abe -M youremail@mit.edu
+#
+cd /yourhome/mocassin
+echo "Starting mocassin run at: `date`" > mocassin.info
+echo "Current working directory is `pwd`" >> mocassin.info
+echo Number of slots is $NSLOTS >> mocassin.info
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo using $NSLOTS slots on:
+#
+module load gcc/5.1.0
+#
+setenv LD_LIBRARY_PATH /usr/lib64/openmpi:$LD_LIBRARY_PATH
+echo $PFILES >> mocassin.info
+#
+mpirun -np $NSLOTS ./mocassin
+#
+echo = `date` job $JOB_NAME done.
+
+echo "Program mocassin finished with exit code $? at: `date`" >> mocassin.info

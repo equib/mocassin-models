@@ -1,0 +1,24 @@
+autoPackets 0.20 2. 10000000
+TStellar 71000.
+output 
+symmetricXYZ
+densityFile 'input/shapeA48.dat'
+TeStart 5000.
+multiChemistry 1 "input/abunA48.in"
+maxIterateMC  20 90.
+nPhotons 1000000
+nx 10
+ny 10
+nz 2
+nstages 7
+nbins 600
+nuMax 18.
+nuMin 1.001e-5
+Rin 1.0e+15
+Rout 1.0e+18
+convLimit 0.05
+multiPhotoSources 'input/a48_star.in'
+getEquivalentTau
+recombinationLines
+fillingFactor 1.0
+

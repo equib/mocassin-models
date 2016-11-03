@@ -1,0 +1,29 @@
+#
+#$ -S /bin/sh
+#$ -pe orte 8
+#$ -cwd -j y
+#$ -N mocassin
+#$ -o mocassin.log
+#$ -l mres=4G,h_data=4G,h_vmem=4G
+#$ -l s_cpu=96:00:00
+#$ -m abe -M youremail@mit.edu
+#
+echo "Starting mocassin run at: `date`" > mocassin.info
+echo "Current working directory is `pwd`" >> mocassin.info
+echo Number of slots is $NSLOTS >> mocassin.info
+echo PE host file is $PE_HOSTFILE >> mocassin.info
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo using $NSLOTS slots on:
+cat $PE_HOSTFILE
+#
+module load gcc/4.9/openmpi-4.9.2
+source $SGE_ROOT/default/common/settings.sh
+#
+echo I_MPI_FABRICS=$I_MPI_FABRICS
+#
+mpirun -np $NSLOTS ./mocassin
+#
+echo = `date` job $JOB_NAME done.
+
+echo "Program mocassin finished with exit code $? at: `date`" >> mocassin.info

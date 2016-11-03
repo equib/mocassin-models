@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -P yourusergroup
+#PBS -q normal
+#PBS -l wd
+#PBS -N mocassin
+#PBS -l ncpus=16
+#PBS -l mem=64gb
+#PBS -l walltime=96:00:00
+#PBS -o mocassin.out
+#PBS -e mocassin.err
+#PBS -M youremail@mit.edu
+#PBS -m bea
+
+module load gcc/4.7.3
+module load openmpi/1.6.3
+ 
+echo "Starting mocassin run at: `date`" > mocassin.info
+echo "Current working directory is `pwd`" >> mocassin.info
+ 
+MPIRUN=mpirun
+EXE=./mocassin
+
+$MPIRUN $EXE
+ 
+echo "Program mocassin finished with exit code $? at: `date`" >> mocassin.info
