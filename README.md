@@ -2,7 +2,7 @@
 
 **MOCASSIN Photoionization Model Examples**
 
-Different examples of photoionization modeling have been implemented using the photoionization code MOCASSIN:
+Different examples of photoionization modeling have been implemented using the [photoionization code MOCASSIN](https://github.com/equib/MOCASSIN-2.0):
 
 * Bi-density Model ([PN SuWt 2](https://github.com/equib/mocassin-models/tree/master/SuWt2))
 
